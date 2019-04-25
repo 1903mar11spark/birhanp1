@@ -12,10 +12,18 @@ public class ConnectionUtil {
 
 	
 	public static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
-		Properties prop = new Properties();
-		InputStream in = new FileInputStream(filename);
-		prop.load(in);
-		return DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("username"), prop.getProperty("password"));
+		Properties properties = new Properties();
+		InputStream file = ConnectionUtil.class.getClassLoader().getResourceAsStream("connection.properties");
+		properties.load(file);
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Error: unable to load driver class!");
+		}
+		
+		return DriverManager.getConnection(properties.getProperty("url"), properties.getProperty("username"), properties.getProperty("password"));
+		
 	}
 	
 }

@@ -60,6 +60,6 @@ public class Employee {
 		return "Employee [empId=" + empId + ", firstname=" + firstname + ", lastname=" + lastname + ", repsTo=" + repsTo
 				+ ", email=" + email + ", isMan=" + isMan + "]";
 	}
-	
+
 	
 }

@@ -20,6 +20,11 @@ public class AddServlet extends HttpServlet{
 	 */
 	private static final long serialVersionUID = 6961179325215119147L;
 
+	
+	
+	
+	
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		try {
 		int i = Integer.parseInt(req.getParameter("num1"));
@@ -27,16 +32,20 @@ public class AddServlet extends HttpServlet{
 		//int j=1;
 		int k = i+j;
 		
-		 HttpSession session = req.getSession();
-				 session.setAttribute("k", k);
-		//req dis and redirect
-		res.sendRedirect("sq");
-		 
-		//RequestDispatcher rd = req.getRequestDispatcher("sq");
-		// rd.forward(req, res); 
+//		 HttpSession session = req.getSession();
+//				 session.setAttribute("k", k);
+//				 session.getAttribute("k").toString();
+//				 session.setAttribute(name, value);
+//				 Integer.par
+//		//req dis and redirect
+//		res.sendRedirect("sq");
+//		 
+//		//RequestDispatcher rd = req.getRequestDispatcher("sq");
+//		// rd.forward(req, res); 
 		 
 
 		}
+		
 		
 		catch(NumberFormatException e) {
 			PrintWriter out = res.getWriter();

@@ -14,7 +14,6 @@ import com.revature.service.ShaneScriptServiceImpl;
 /**
  * Servlet implementation class LoginCheckServlet
  */
-//@WebServlet("/login")
 public class LoginCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,17 +46,13 @@ public class LoginCheckServlet extends HttpServlet {
 				//attempt to authenticate user
 			//	User u = as.isValidUser(creds);
 				if (sss.Employeelogin(request.getParameter("username"), request.getParameter("password")) == true) {
-					System.out.println("shouldve work");
-					response.sendRedirect("index");
+					session.setAttribute("USERID", sss.getIdFromLogin(request.getParameter("username"), request.getParameter("password")));
+					response.sendRedirect("profile");
 				} else {
 					session.setAttribute("problem", "invalid credentials");
 					//otherwise redirect to login page
-					System.out.println("nice try tho");
-					System.out.println(request.getParameter("username"));
-					System.out.println(request.getParameter("password"));
-					System.out.println(sss.Employeelogin(request.getParameter("username"), request.getParameter("password")));
-					System.out.println(sss.getIdFromLogin(request.getParameter("username"), request.getParameter("password")));
-					response.sendRedirect("index");
+					
+					response.sendRedirect("login");
 				}
 	}
 
